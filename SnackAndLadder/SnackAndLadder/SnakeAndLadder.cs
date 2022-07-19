@@ -21,11 +21,11 @@ namespace SnakeAndLadderProgram
             Console.WriteLine("Player Position:", PlayerPosition);
             Random random = new Random();
             
-            while (StartPoint < Winning)
+            while (StartPoint < Winning)//while loop loops through a block of code as long as a specified condition is True
             {
                 int DiceRolled = random.Next(1, 7);
                 int Option = random.Next(0, 3);
-                switch (Option)
+                switch (Option)//switch statement to select one of many code blocks to be executed.
                 {
                     case No_Play:
                         Console.WriteLine("No Play");
@@ -34,13 +34,16 @@ namespace SnakeAndLadderProgram
                         StartPoint += DiceRolled;
                         Console.WriteLine("Dice Rolls Value : +{0} ", DiceRolled);
                         Console.WriteLine("Got Ladder : " + StartPoint);
+                        if (StartPoint > Winning)
+                        {
+                            StartPoint -= DiceRolled;
+                        }
                         Console.WriteLine("Player Position : " + StartPoint);
                         break;
-                    case snake:
+                        case snake:
                         StartPoint -= DiceRolled;
                         Console.WriteLine("Dice Rolls Value : -{0}", DiceRolled);
                         Console.WriteLine("Snake Attack : " + StartPoint);
-
                         if (StartPoint < 0)
                         {
                             StartPoint = 0;
@@ -48,12 +51,11 @@ namespace SnakeAndLadderProgram
                         Console.WriteLine("Player Position : " + StartPoint);
                         break;
                 }
-                if (StartPoint >= Winning)
-                {
-                    Console.WriteLine("Won");
-
-                }
-
+                        //if (StartPoint >= Winning)
+                        if (StartPoint == Winning)//if to specify a block of code to be executed, if a specified condition is true
+                        {
+                        Console.WriteLine("Won");
+                        }
             }
 
         }
@@ -61,6 +63,5 @@ namespace SnakeAndLadderProgram
     }
 
 }
-
 
 
